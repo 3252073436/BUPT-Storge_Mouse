@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+input[type="text"], input[type="number"], select {
+    padding: 10px;
+    width: 300px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.current-folder {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.current-folder em {
+    color: red;
+    font-style: italic;
+}
+
+.flash-messages {
+    background-color: #baff93;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+.flash-messages ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flash-messages ul li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Progress Bar Style */
+#progress-bar {
+    width: 0;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    margin: 10px 0;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Style for Select options */
+select {
+    font-size: 16px;
+    padding: 8px;
+}
+
+/* Additional styling for top-k options */
+label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Results Table Styling */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.results-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.results-table .file-path {
+    max-width: 400px; /* 设置最大宽度 */
+    overflow: hidden; /* 隐藏溢出文字 */
+    text-overflow: ellipsis; /* 添加省略号 */
+    word-wrap: break-word;  /* 允许单词断行 */
+    white-space: normal;    /* 允许换行 */
+    word-break: break-all;  /* 防止长路径溢出，强制断开 */
+}
+
+.result-image {
+    width: 150px;
+    height: auto;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+

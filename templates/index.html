@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找出你电脑里的好东西-仓鼠2式</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>仓鼠2式</h1>
+
+        <div class="current-folder">
+            <p>当前扫描文件夹:
+                {% if current_folder %}
+                    <strong>{{ current_folder }}</strong>
+                {% else %}
+                    <em>无</em>
+                {% endif %}
+            </p>
+        </div>
+
+        <form action="/scan" method="POST" class="form-container">
+            <label for="folder_path">输入你要扫描的文件夹路径:</label>
+            <input type="text" id="folder_path" name="folder_path" required>
+            <button type="submit">点击扫描文件夹</button>
+        </form>
+
+        <div id="progress-bar"></div>
+
+        <form action="/query" method="POST" class="form-container">
+            <label for="query_text">输入你想搜索的词条:</label>
+            <input type="text" id="query_text" name="query_text" required>
+
+            <label for="top_k">输出结果的数量:</label>
+            <select id="top_k" name="top_k">
+                <option value="1">Top 1</option>
+                <option value="3">Top 3</option>
+                <option value="10" selected>Top 10</option>
+                <option value="20">Top 20</option>
+                <option value="40">Top 40</option>
+                <option value="all">全部</option>
+            </select>
+
+            <label for="similarity_threshold">最低相似度:</label>
+            <input type="number" id="similarity_threshold" name="similarity_threshold" step="0.01" value="0.3">
+
+            <button type="submit">点击搜索</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function updateProgress() {
+            fetch('/progress')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('progress-bar').style.width = data.progress + '%';
+                    if (data.progress < 100) {
+                        setTimeout(updateProgress, 500);
+                    }
+                });
+        }
+
+        document.querySelector('form[action="/scan"]').addEventListener('submit', function() {
+            document.getElementById('progress-bar').style.width = '0';
+            setTimeout(updateProgress, 500);
+        });
+    </script>
+</body>
+</html>

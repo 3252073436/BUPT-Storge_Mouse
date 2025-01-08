@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .file-path {
+            word-wrap: break-word;  /* 允许单词断行 */
+            white-space: normal;    /* 允许换行 */
+            max-width: 500px;       /* 设置最大宽度，根据需要调整 */
+            word-break: break-all;  /* 防止长路径溢出，强制断开 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>搜索结果</h1>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>结果</th>
+                    <th>文件原始路径</th>
+                    <th>相似度</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for img_path, similarity, raw_path in similar_images %}
+                    <tr>
+                        <td>
+                            <img src="{{ url_for('static', filename=img_path) }}" alt="Image" class="result-image">
+                        </td>
+                        <td class="file-path" title="{{ raw_path }}">{{ raw_path }}</td>
+                        <td>{{ similarity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="/" class="back-button">返回主页</a>
+    </div>
+</body>
+</html>
