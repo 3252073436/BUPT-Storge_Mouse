@@ -2,7 +2,8 @@
 
 
 
-使用前的前提条件：用户必须拥有python环境，在requirements.txt中还介绍了运行该项目所必须的python库:
+使用前的前提条件：用户必须拥有python环境，在requirements.txt中列出了运行该项目所必须的python库:
+
 ·  Flask: 用于构建 web 应用的框架。
 
 ·  transformers: 用于加载和使用 ChineseCLIPModel 和 ChineseCLIPProcessor（来自 Hugging Face）。
